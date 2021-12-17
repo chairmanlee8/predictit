@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+
+    <title>Twitter Viewer</title>
+
+    <style type="text/css">
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+          Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+          'Segoe UI Symbol';
+        font-size: 12px;
+      }
+      .label {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+          Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+          'Segoe UI Symbol';
+        text-align: center;
+      }
+      td.label:first-child {
+        text-align: left;
+      }
+      @font-face {
+        font-family: InputMonoReg;
+        src: url('./InputMono-Regular.ttf') format('truetype');
+      }
+      @font-face {
+        font-family: InputMonoLight;
+        src: url('./InputMono-Light.ttf') format('truetype');
+      }
+      @font-face {
+        font-family: InputSansLight;
+        src: url('./InputSans-Light.ttf') format('truetype');
+      }
+      #heatmap th {
+        position: sticky;
+        top: 0;
+        background-color: white;
+      }
+      td {
+        font-family: InputMonoLight;
+        cursor: pointer;
+        text-align: right;
+        white-space: nowrap;
+      }
+      .hourly.rank-0 {
+        background-color: #ffffff;
+      }
+      .hourly.rank-1 {
+        background-color: #c1e7ff;
+      }
+      .hourly.rank-2 {
+        background-color: #9dc6e0;
+      }
+      .hourly.rank-3 {
+        background-color: #7aa6c2;
+      }
+      .hourly.rank-4 {
+        background-color: #5886a5;
+        color: white;
+      }
+      .hourly.rank-5 {
+        background-color: #346888;
+        color: white;
+      }
+      .hourly.rank-6 {
+        background-color: #004c6d;
+        color: white;
+      }
+      .daily.rank-0 {
+        background-color: #ffffff;
+      }
+      .daily.rank-1 {
+        background-color: #f5dafb;
+      }
+      .daily.rank-2 {
+        background-color: #d4afdd;
+      }
+      .daily.rank-3 {
+        background-color: #b385bf;
+      }
+      .daily.rank-4 {
+        background-color: #925ca3;
+        color: white;
+      }
+      .daily.rank-5 {
+        background-color: #713386;
+        color: white;
+      }
+      .daily.rank-6 {
+        background-color: #50006b;
+        color: white;
+      }
+      td.Fr,
+      td.Sa,
+      td.Su {
+        background-color: #cccccc;
+      }
+      #app {
+        display: grid;
+        grid-template-columns: min-content auto min-content;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 12px;
+      }
+      .layout {
+        overflow-x: hidden;
+        overflow-y: scroll;
+      }
+      .column-1 {
+        grid-column: 1;
+      }
+      .column-2 {
+        grid-column: 2;
+      }
+      .column-3 {
+        grid-column: 3;
+      }
+      #markets td:not(:first-child) {
+        padding-left: 1em;
+      }
+      .scalar-info > div {
+        display: flex;
+        justify-content: space-between;
+      }
+      .scalar-info span {
+        display: inline-block;
+      }
+      .scalar-info label {
+        font-weight: 700;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <div class="column-1 layout">
+        <div id="heatmap">
+          <tweets-heatmap
+            v-bind:handle="handle"
+            v-bind:daily="daily"
+            v-bind:hourly="hourly"
+          ></tweets-heatmap>
+        </div>
+      </div>
+      <div class="column-2 layout">
+        <div id="browser">
+          <tweets-browser v-bind:tweets="state.tweets"></tweets-browser>
+        </div>
+      </div>
+      <div class="column-3 layout">
+        <div id="controls">
+          <button>Sync & Refresh</button>
+          <button v-on:click="refresh">Refresh</button>
+        </div>
+        <div id="markets">
+          <market v-bind:market="state.markets.RDT"></market>
+          <market v-bind:market="state.markets.WH"></market>
+          <market v-bind:market="state.markets.POTUS"></market>
+        </div>
+      </div>
+    </div>
+
+    <script src="node_modules/lodash/lodash.min.js"></script>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script src="tweet-viewer.js"></script>
+  </body>
+</html>

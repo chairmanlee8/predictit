@@ -1,0 +1,4 @@
+Other ideas to show:
+
+- VAR_max (value-at-risk at any point of time (open contracts \* avg px))
+- bucket VWAP_buy 10-wide, graph against %win (prediction calibration)

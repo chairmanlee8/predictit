@@ -1,0 +1,9 @@
+.DS_Store
+env/
+node_modules/
+*.ipynb
+*.csv
+*.csv.bak
+*.xlsx
+__pycache__
+~*

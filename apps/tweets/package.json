@@ -1,0 +1,27 @@
+{
+  "name": "tweets",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "NODE_PATH=. electron .",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "npm rebuild zeromq --runtime=electron --target=1.4.5"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "date-fns": "^2.13.0",
+    "dygraphs": "^2.1.0",
+    "electron": "^8.2.3",
+    "immutable": "^4.0.0-rc.12",
+    "module-alias": "^2.2.2",
+    "prettier": "^2.0.5",
+    "vue": "^2.6.11",
+    "ws": "^7.2.5"
+  },
+  "_moduleAliases": {
+    "@app": "."
+  },
+  "dependencies": {}
+}

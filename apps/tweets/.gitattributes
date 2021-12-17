@@ -1,0 +1,4 @@
+POTUS.csv filter=lfs diff=lfs merge=lfs -text
+WhiteHouse.csv filter=lfs diff=lfs merge=lfs -text
+realDonaldTrump.csv filter=lfs diff=lfs merge=lfs -text
+events.db filter=lfs diff=lfs merge=lfs -text
